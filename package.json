@@ -1,0 +1,71 @@
+{
+  "name": "n8n-nodes-ictcore",
+  "version": "0.1.0",
+  "description": "n8n community node for ICTCore. Send faxes, place calls, manage contacts and run campaigns on ICTFax, ICTPBX and open source ICTDialer from a workflow.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "ictcore",
+    "ictfax",
+    "ictpbx",
+    "ictdialer",
+    "fax",
+    "pbx",
+    "voip",
+    "freeswitch",
+    "telephony",
+    "auto-dialer"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ictinnovations/n8n-nodes-ictcore",
+  "author": {
+    "name": "Tahir Almas",
+    "email": "tahir@ictinnovations.com",
+    "url": "https://ictinnovations.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ictinnovations/n8n-nodes-ictcore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ictinnovations/n8n-nodes-ictcore/issues"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "index.js",
+    "!dist/tsconfig.tsbuildinfo"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/IctCoreApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/IctCore/IctCore.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/eslint-plugin-community-nodes": "^0.28.0",
+    "@types/node": "^20.19.0",
+    "eslint": "9.29.0",
+    "gulp": "^5.0.0",
+    "jsonc-eslint-parser": "^2.4.2",
+    "n8n-workflow": "*",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.66.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

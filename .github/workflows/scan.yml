@@ -1,0 +1,28 @@
+name: n8n community package scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Published version to scan'
+        required: true
+        default: 'latest'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # The scanner only writes its report to a TTY, so it prints nothing at all
+      # under Actions. Give it a pseudo-terminal and translate the carriage returns.
+      - run: |
+          set +e
+          script -qec "npx --yes @n8n/scan-community-package n8n-nodes-ictcore@${{ inputs.version }}" /dev/null > scan.out 2>&1
+          status=$?
+          set -e
+          tr '\r' '\n' < scan.out
+          exit $status
+        shell: bash

@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-ictcore.ictCore",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Communication", "Utility"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://ictpbx.com/ictpbx-rest-api/"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/ictinnovations/n8n-nodes-ictcore"
+			}
+		]
+	}
+}
