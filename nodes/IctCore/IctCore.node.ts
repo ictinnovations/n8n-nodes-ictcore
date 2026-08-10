@@ -265,7 +265,7 @@ export class IctCore implements INodeType {
 					{ displayName: 'Custom 2', name: 'custom2', type: 'string', default: '' },
 					{ displayName: 'Custom 3', name: 'custom3', type: 'string', default: '' },
 					{ displayName: 'Description', name: 'description', type: 'string', default: '' },
-					{ displayName: 'Email', name: 'email', type: 'string', default: '' },
+					{ displayName: 'Email', name: 'email', type: 'string', placeholder: 'name@email.com', default: '' },
 					{ displayName: 'First Name', name: 'first_name', type: 'string', default: '' },
 					{ displayName: 'Last Name', name: 'last_name', type: 'string', default: '' },
 					{
@@ -289,12 +289,12 @@ export class IctCore implements INodeType {
 					{ name: 'Add Contact', value: 'addContact', action: 'Add a contact to a group' },
 					{ name: 'Create', value: 'create', action: 'Create a group' },
 					{ name: 'Delete', value: 'delete', action: 'Delete a group' },
-					{ name: 'Get Many', value: 'getAll', action: 'Get many groups' },
 					{
 						name: 'Get Contacts',
 						value: 'getContacts',
 						action: 'Get the contacts in a group',
 					},
+					{ name: 'Get Many', value: 'getAll', action: 'Get many groups' },
 				],
 				default: 'create',
 			},
@@ -500,7 +500,7 @@ export class IctCore implements INodeType {
 						operation: ['getAll', 'getContacts', 'cdr'],
 					},
 				},
-				description: 'Whether to return every result or only up to the limit',
+				description: 'Whether to return all results or only up to a given limit',
 			},
 			{
 				displayName: 'Limit',
