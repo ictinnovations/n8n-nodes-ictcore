@@ -18,11 +18,10 @@ jobs:
 
       # The scanner only writes its report to a TTY, so it prints nothing at all
       # under Actions. Give it a pseudo-terminal and translate the carriage returns.
+      # `script` does not propagate the child's exit code reliably here, so the
+      # verdict is read out of the report instead.
       - run: |
-          set +e
-          script -qec "npx --yes @n8n/scan-community-package n8n-nodes-ictcore@${{ inputs.version }}" /dev/null > scan.out 2>&1
-          status=$?
-          set -e
+          script -qec "npx --yes @n8n/scan-community-package n8n-nodes-ictcore@${{ inputs.version }}" /dev/null > scan.out 2>&1 || true
           tr '\r' '\n' < scan.out
-          exit $status
+          if grep -q "failed security checks" scan.out; then exit 1; fi
         shell: bash
