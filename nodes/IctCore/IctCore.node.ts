@@ -408,7 +408,12 @@ export class IctCore implements INodeType {
 				type: 'string',
 				required: true,
 				default: '',
-				displayOptions: { show: { resource: ['transmission'] } },
+				displayOptions: {
+					show: {
+						resource: ['transmission'],
+						operation: ['get', 'result', 'retry', 'send', 'status'],
+					},
+				},
 			},
 
 			// Extension
@@ -767,7 +772,9 @@ export class IctCore implements INodeType {
 						}
 					}
 				} else if (resource === 'transmission') {
-					const transmissionId = this.getNodeParameter('transmissionId', i) as string;
+					// Get Many is the one transmission operation with no ID to read.
+					const transmissionId =
+						operation === 'getAll' ? '' : (this.getNodeParameter('transmissionId', i) as string);
 					if (operation === 'get') {
 						responseData = await ictCoreApiRequest.call(
 							this,

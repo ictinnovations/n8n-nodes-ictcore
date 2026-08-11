@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-ictcore",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "n8n community node for ICTCore. Send faxes, place calls, manage contacts and run campaigns on ICTFax, ICTPBX and open source ICTDialer from a workflow.",
   "keywords": [
     "n8n-community-node-package",
